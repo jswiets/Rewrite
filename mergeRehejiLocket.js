@@ -1,17 +1,24 @@
 (async () => {
-    // Tải và thực thi LKG_delete_header.js (Xóa header)
-    let lkgDeleteHeader = await fetch("https://raw.githubusercontent.com/DungHoang120401/Nobita/refs/heads/main/Scripts/LKG_delete_header.js").then(res => res.text());
-    eval(lkgDeleteHeader);
+    const scriptUrls = [
+        "https://raw.githubusercontent.com/DungHoang120401/Nobita/refs/heads/main/Scripts/LKG_delete_header.js",
+        "https://raw.githubusercontent.com/chxm1023/Rewrite/main/Reheji.js",
+        "https://raw.githubusercontent.com/DungHoang120401/Nobita/refs/heads/main/Scripts/Locket_Gold.js",
+        "https://raw.githubusercontent.com/jswiets/Surge-LK/refs/heads/main/scripts/langkhach/revenuecat.js"
+    ];
 
-    // Tải và thực thi Reheji.js (Mở khóa RevenueCat)
-    let reheji = await fetch("https://raw.githubusercontent.com/chxm1023/Rewrite/main/Reheji.js").then(res => res.text());
-    eval(reheji);
+    try {
+        const scripts = await Promise.all(scriptUrls.map(url => fetch(url).then(res => res.text())));
+        
+        scripts.forEach(script => {
+            try {
+                eval(script);  // Execute each script safely
+            } catch (err) {
+                console.error("Error executing script:", err);
+            }
+        });
 
-    // Tải và thực thi Locket_Gold.js (Mở khóa Locket Gold)
-    let locketGold = await fetch("https://raw.githubusercontent.com/DungHoang120401/Nobita/refs/heads/main/Scripts/Locket_Gold.js").then(res => res.text());
-    eval(locketGold);
-
-    // Tải và thực thi revenuecat của LK
-     let revelk = await fetch("https://raw.githubusercontent.com/jswiets/Surge-LK/raw/refs/heads/main/scripts/langkhach/revenuecat.js").then(res => res.text());
-    eval(revelk);
+        console.log("All scripts executed successfully!");
+    } catch (error) {
+        console.error("Error loading scripts:", error);
+    }
 })();
