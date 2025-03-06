@@ -10,4 +10,8 @@
     // Tải và thực thi Locket_Gold.js (Mở khóa Locket Gold)
     let locketGold = await fetch("https://raw.githubusercontent.com/DungHoang120401/Nobita/refs/heads/main/Scripts/Locket_Gold.js").then(res => res.text());
     eval(locketGold);
+
+    // Tải và thực thi revenuecat của LK
+     let revelk = await fetch("https://raw.githubusercontent.com/jswiets/Surge-LK/raw/refs/heads/main/scripts/langkhach/revenuecat.js").then(res => res.text());
+    eval(revelk);
 })();
